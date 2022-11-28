@@ -14,12 +14,12 @@ const editBtn = document.createElement("button");
 editBtn.textContent = "edit";
 
             // create remove button
-const removeBtn = document.createElement("button");
-removeBtn.textContent = "remove";
+const deleteBtn = document.createElement("button");
+deleteBtn.textContent = "Delete";
 
 li.appendChild(span);
 li.appendChild(editBtn);
-li.appendChild(removeBtn);
+li.appendChild(deleteBtn);
 
 
 return li;
@@ -31,8 +31,26 @@ event.preventDefault();
 
 const li = createLi();
 
-ul.appendChild(li);
+if(input.value == "") {
+    alert("Enter User Name Please")
+}else{
+    ul.appendChild(li);
+}
 
 input.value = "" ;
 
+});
+
+// button action
+
+// delete button
+ul.addEventListener("click", (event) => {
+if(event.target.tagName === "BUTTON") {
+    const button = event.target;
+    const li = button.parentNode;
+    const ul = li.parentNode;
+if(button.textContent === "Delete" ) {
+ul.removeChild(li);
+}
+}
 });
